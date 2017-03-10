@@ -1,0 +1,16 @@
+version: '2'
+services:
+    personal-website:
+        container_name: mark_website
+        build:
+            context: .
+        restart: always
+        environment:
+            - VIRTUAL_PORT=9123
+            - VIRTUAL_HOST=mark.larah.me
+
+
+networks:
+  default:
+    external:
+      name: proxyland
