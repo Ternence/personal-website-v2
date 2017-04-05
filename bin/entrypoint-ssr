@@ -1,4 +1,4 @@
 #!/bin/bash -eu
 export PATH="$HOME/.yarn/bin:$PATH"
 pushd /code
-make serve
+make serve-ssr

@@ -3,7 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './app/jsx/index.jsx',
+    entry: './assets/jsx/index.jsx',
     output: {
         path: 'build',
         filename: 'bundle.js'
@@ -12,7 +12,7 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                use: ["babel-loader"]
+                use: 'babel-loader'
             }
         ]
     },
@@ -22,7 +22,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'app/index.html'
+            template: 'assets/index.html'
         }),
         new webpack.DefinePlugin({
             'process.env': {

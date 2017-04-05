@@ -6,6 +6,6 @@ RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 COPY . /code
 WORKDIR /code
 
-EXPOSE 9123
+EXPOSE 3030
 
-ENTRYPOINT ["/code/bin/entrypoint"]
+ENTRYPOINT ["/code/bin/entrypoint-ssr"]

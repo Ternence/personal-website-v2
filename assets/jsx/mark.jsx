@@ -1,10 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Link from './link';
-import Shaker from './shaker';
 
-const template = (
-    <Shaker>
+export default () => (
+    <div>
         <header>
             <h1>Mark Larah</h1>
             <aside><i>Developer of fine artisanal software</i></aside>
@@ -19,7 +17,5 @@ const template = (
             <li><Link url="https://twitter.com/mark_larah" /></li>
             <li><Link url="https://github.com/magicmark" /></li>
         </ul>
-    </Shaker>
+    </div>
 )
-
-ReactDOM.render(template, document.getElementById('root'));
