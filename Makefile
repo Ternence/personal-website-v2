@@ -1,21 +1,14 @@
-export DOCKER_TAG_WEB ?= markl-website-web
-export DOCKER_TAG_SSR ?= markl-website-ssr
+export DOCKER_TAG ?= markl-website
 
-docker-build-ssr:
-	docker build --file Dockerfile.ssr -t $(DOCKER_TAG_SSR) .
+docker-build:
+	docker build --file Dockerfile -t $(DOCKER_TAG) .
 
-docker-build-web:
-	docker build --file Dockerfile.web -t $(DOCKER_TAG_WEB) .
-
-docker-run-ssr: docker-build-ssr
-	docker run -it --rm --name $(DOCKER_TAG_SSR) $(DOCKER_TAG_SSR)
-
-docker-run-web: docker-build-web
-	docker run -it --rm --name $(DOCKER_TAG_WEB) $(DOCKER_TAG_WEB)
+docker-run: docker-build
+	docker run -it --rm --env-file env_vars -p 9123:9123 --name $(DOCKER_TAG) $(DOCKER_TAG)
 
 .PHONY: node_modules
 node_modules:
-	yarn install
+	yarn install --verbose
 
 build-ssr: node_modules
 	node_modules/.bin/webpack --config webpack.ssr.config.js
@@ -23,8 +16,8 @@ build-ssr: node_modules
 build-web: node_modules
 	node_modules/.bin/webpack --config webpack.web.config.js
 
-serve-ssr: build-ssr
-	node server-side-renderer/index.js
+serve-ssr:
+	node server-side-renderer/hypernova.js
 
 serve-web: build-web
-	node_modules/.bin/http-server -d false -p 9123 build
+	node ./webserver.js

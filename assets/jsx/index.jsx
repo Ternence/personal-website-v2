@@ -1,9 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { renderReact } from 'hypernova-react';
 import Mark from './mark';
 
-const template = (
-    <Mark />
-)
-
-ReactDOM.render(template, document.getElementById('root'));
+renderReact('Mark', Mark);

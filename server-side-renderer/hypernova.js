@@ -1,17 +1,37 @@
-const bundle = require('./bundle');
+const fs = require('fs'); 
+const path = require('path');
+const hypernova = require('hypernova/server');
+const renderReact = require('hypernova-react').renderReact;
+const downloadBundle = require('./downloadBundle');
 
+const BUNDLE_PATH = path.join(__dirname, 'ssr-bundle.js');
+const SHA = require('child_process').execSync('git rev-parse HEAD').toString().trim();
 
-var hypernova = require('hypernova/server');
+function startHypernova (bundle) {
+    hypernova({
+        getComponent(name) {
+            const component = bundle[name];
+            if (component) {
+                return renderReact(name, component);
+            }
 
-hypernova({
-  devMode: true,
+            return null;
+        }
+    });
+};
 
-  getComponent(name) {
-    if (name === 'Mark') {
-      return require('./bundle').Mark();
-    }
-    return null;
-  },
+function main () {
+    fs.stat(BUNDLE_PATH, (err, stat) => {
+        if (!err) {
+            // Bundle already exists on disk.
+            startHypernova(require(BUNDLE_PATH));
+        } else {
+            downloadBundle(SHA, BUNDLE_PATH, () => {
+                const bundle = require(BUNDLE_PATH);
+                startHypernova(bundle); 
+            });
+        }
+    });
+}
 
-  port: 3030,
-});
+main();
