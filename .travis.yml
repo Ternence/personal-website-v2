@@ -8,3 +8,4 @@ addons:
     debug: true
     paths:
       - $(ls ssr_bundles/*.js)
+    target_paths: /website_ssr_bundles
