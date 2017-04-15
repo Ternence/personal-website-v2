@@ -1,17 +1,23 @@
 export DOCKER_TAG ?= markl-website
 
-.PHONY: docker-build
 docker-build:
-	docker build -t $(DOCKER_TAG) .
+	docker build --file Dockerfile -t $(DOCKER_TAG) .
 
-.PHONY: docker-run
 docker-run: docker-build
-	docker run -it --rm --name $(DOCKER_TAG) $(DOCKER_TAG)
+	docker run -it --rm --env-file env_vars -p 9123:9123 --name $(DOCKER_TAG) $(DOCKER_TAG)
 
-build:
-	yarn install
-	node_modules/.bin/webpack
+.PHONY: node_modules
+node_modules:
+	yarn install --verbose
 
-.PHONY: serve
-serve: build
-	node_modules/.bin/http-server -d false -p 9123 build
+build-ssr: node_modules
+	node_modules/.bin/webpack --config webpack.ssr.config.js
+
+build-web: node_modules
+	node_modules/.bin/webpack --config webpack.web.config.js
+
+serve-ssr:
+	node server-side-renderer/hypernova.js
+
+serve-web: build-web
+	node ./webserver.js

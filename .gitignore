@@ -1,2 +1,5 @@
-node_modules
 build
+env_vars
+node_modules
+server-side-renderer/bundle.js
+ssr_bundles

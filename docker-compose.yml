@@ -1,14 +1,25 @@
 version: '2'
 services:
-    personal-website:
-        container_name: mark_website
+    personal-website-web:
+        container_name: mark_website_web
         build:
             context: .
+            dockerfile: Dockerfile.web
         restart: always
         environment:
             - VIRTUAL_PORT=9123
-            - VIRTUAL_HOST=mark.larah.me
+            - VIRTUAL_HOST=mark.larah.me,web.local
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+        env_file: ./env_vars
 
+
+    personal-website-ssr:
+        container_name: mark_website_ssr
+        build:
+            context: .
+            dockerfile: Dockerfile.ssr
+        restart: always
 
 networks:
   default:
