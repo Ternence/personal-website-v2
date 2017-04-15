@@ -9,7 +9,7 @@ function downloadBundle (sha, dest, done) {
         bucket: process.env.ARTIFACTS_BUCKET,
     });
 
-    const filePath = `/website_ssr_bundles/mark-website-${sha}.js`;
+    const filePath = `/website_ssr_bundles/ssr_bundles/mark-website-${sha}.js`;
 
     client.getFile(filePath, function(err, res) {
         if (err || res.statusCode !== 200) {
