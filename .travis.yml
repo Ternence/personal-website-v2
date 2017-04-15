@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-    - "6"
+  - "6"
 script:
-  - make build_ssr
+  - make build-ssr
 addons:
   artifacts:
     debug: true
