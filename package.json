@@ -5,6 +5,9 @@
   "author": "Mark Larah <mark@larah.me>",
   "license": "MIT",
   "repository": "git@github.com:magicmark/personal-website-v2",
+  "scripts": {
+    "test": "echo testing wip" 
+  },
   "dependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
