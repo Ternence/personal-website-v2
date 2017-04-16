@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const nodeExternals = require('webpack-node-externals');
 
 const SHA = require('child_process').execSync('git rev-parse HEAD').toString().trim();
 const OUTPUT = `mark-website-${SHA}.js`;
@@ -8,9 +7,8 @@ const OUTPUT = `mark-website-${SHA}.js`;
 module.exports = {
     entry: './assets/components-entrypoint.jsx',
     target: 'node',
-    externals: [nodeExternals()],
     output: {
-        libraryTarget: 'commonjs',
+        libraryTarget: 'commonjs2',
         path: path.join(__dirname, 'ssr_bundles'),
         filename: OUTPUT,
     },
@@ -27,9 +25,15 @@ module.exports = {
         extensions: ['.js', '.jsx']
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            "React": "react",
+        }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+        }),
         new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
-            compress: true,
+            minimize: false,
+            compress: false,
         }),
     ]
 };

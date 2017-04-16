@@ -1,5 +1,5 @@
 build
 env_vars
 node_modules
-server-side-renderer/bundle.js
+server-side-renderer/ssr-bundle.js
 ssr_bundles

@@ -11,7 +11,9 @@ node_modules:
 	yarn install --verbose
 
 build-ssr: node_modules
+	rm -rf ssr_bundles
 	node_modules/.bin/webpack --config webpack.ssr.config.js
+	cd server-side-renderer && ln -vsf "../$(shell ls ssr_bundles/*.js)" ssr-bundle.js
 
 build-web: node_modules
 	node_modules/.bin/webpack --config webpack.web.config.js
