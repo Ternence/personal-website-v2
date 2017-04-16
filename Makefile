@@ -18,7 +18,7 @@ build-ssr: node_modules
 build-web: node_modules
 	node_modules/.bin/webpack --config webpack.web.config.js
 
-serve-ssr:
+serve-ssr: node_modules
 	node server-side-renderer/hypernova.js
 
 serve-web: build-web
