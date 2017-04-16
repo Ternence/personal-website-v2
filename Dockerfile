@@ -12,5 +12,5 @@ COPY . /code
 WORKDIR /code
 
 EXPOSE 9123
-
-ENTRYPOINT ["/usr/bin/supervisord"]
+CMD ["$HOME/.yarn/bin/yarn", "install"]
+CMD ["/usr/bin/supervisord"]
