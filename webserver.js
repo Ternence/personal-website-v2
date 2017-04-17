@@ -2,8 +2,10 @@ const path = require('path');
 const axios = require('axios');
 const express = require('express');
 const template = require('./assets/index.template');
+const compression = require('compression')
 
 const app = express();
+app.use(compression());
 
 app.use('/assets', express.static(path.join(__dirname, 'build')));
 
