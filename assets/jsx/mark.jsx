@@ -13,7 +13,6 @@ class Mark extends React.Component {
     render() {
         return (
             <div>
-                <Title>Test</Title>
                 <header>
                     <h1>Mark Larah</h1>
                     <aside><i>Developer of fine artisanal software</i></aside>
