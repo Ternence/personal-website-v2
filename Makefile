@@ -13,13 +13,18 @@ node_modules:
 build-ssr: node_modules
 	rm -rf ssr_bundles
 	node_modules/.bin/webpack --config webpack.ssr.config.js
-	cd server-side-renderer && ln -vsf "../$(shell ls ssr_bundles/*.js)" ssr-bundle.js
+	ln -vsf "$(shell readlink -f ssr_bundles/*.js)" server-side-renderer/ssr-bundle.js
 
 build-web: node_modules
 	node_modules/.bin/webpack --config webpack.web.config.js
 
 serve-ssr:
-	node server-side-renderer/hypernova.js
+	node ./server-side-renderer/hypernova.js
 
 serve-web: build-web
 	node ./webserver.js
+
+clean:
+	rm -f server-side-renderer/ssr-bundle.js
+	rm -rf build
+	rm -rf ssr_bundles

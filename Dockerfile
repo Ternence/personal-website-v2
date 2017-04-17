@@ -12,5 +12,5 @@ COPY . /code
 WORKDIR /code
 
 EXPOSE 9123
-CMD ["$HOME/.yarn/bin/yarn", "install"]
+RUN ["/root/.yarn/bin/yarn", "install"]
 CMD ["/usr/bin/supervisord"]
