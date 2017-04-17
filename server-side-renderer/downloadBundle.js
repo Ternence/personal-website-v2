@@ -20,6 +20,7 @@ function downloadBundle (sha, dest, done) {
 
         res.on('data', (chunk) => { file.write(chunk); });
         res.on('end', (chunk) => {
+            file.write(chunk);
             file.end();
             done();
         });
