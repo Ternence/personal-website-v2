@@ -3,8 +3,8 @@ const webpack = require('webpack');
 const webpackVisualizer = require('webpack-visualizer-plugin');
 
 const VENDOR = [
-  'react',
-  'react-dom',
+    'hypernova-react',
+    'styled-components',
 ];
 
 module.exports = {
@@ -31,7 +31,7 @@ module.exports = {
             minChunks: Infinity,
         }),
         new webpackVisualizer({
-            filename: './webpack.stats.html',
+            filename: './statistics.html',
         }),
     ],
     module: {
@@ -46,21 +46,8 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx']
     },
-    // https://github.com/webpack/webpack/issues/1275#issuecomment-245470919
-    /*
     externals: {
-        react: {
-            root: 'React',
-            commonjs2: 'react',
-            commonjs: 'react',
-            amd: 'react'
-        },
-        'react-dom': {
-            root: 'ReactDOM',
-            commonjs2: 'react-dom',
-            commonjs: 'react-dom',
-            amd: 'react-dom'
-        }
-    },
-    */
+        'react': 'window.React',
+        'react-dom': 'window.ReactDOM'
+    }
 };
