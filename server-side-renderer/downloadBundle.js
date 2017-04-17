@@ -10,18 +10,17 @@ function downloadBundle (sha, dest, done) {
     });
 
     const filePath = `/website_ssr_bundles/ssr_bundles/mark-website-${sha}.js`;
+    const fileStream = fs.createWriteStream(dest);
 
     client.getFile(filePath, function(err, res) {
         if (err || res.statusCode !== 200) {
-            throw new ReferenceError(`Could not download ${filePath}`);
+            fs.unlinkSync(fileStream.path);
+            console.log(err);
+            throw new ReferenceError(`Could not download ${filePath}.`);
         }
 
-        const file = fs.createWriteStream(dest);
-
-        res.on('data', (chunk) => { file.write(chunk); });
-        res.on('end', (chunk) => {
-            file.write(chunk);
-            file.end();
+        res.pipe(fileStream);
+        res.on('end', () => {
             done();
         });
     });
