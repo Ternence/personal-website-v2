@@ -1,4 +1,2 @@
 build
 node_modules
-server-side-renderer/ssr-bundle.js
-ssr_bundles

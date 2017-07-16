@@ -1,4 +1,5 @@
 #!/bin/bash -eu
 export PATH="$HOME/.yarn/bin:$PATH"
 pushd /code
-make serve-web
+make build
+node ./build/webserver.js

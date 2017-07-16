@@ -8,25 +8,16 @@ docker-run: docker-build
 
 .PHONY: node_modules
 node_modules:
-	yarn install --verbose
+	yarn install
 
-build-ssr: node_modules
-	rm -rf ssr_bundles
-	node_modules/.bin/webpack -p --config webpack.ssr.config.js
+.PHONY: build
+build: node_modules
+	mkdir -p build
+	node_modules/.bin/babel app -d build
+	node_modules/.bin/webpack -p --config webpack.config.js
 
-link-ssr: build-ssr
-	ln -vsf "$(shell readlink -f ssr_bundles/*.js)" server-side-renderer/ssr-bundle.js
-
-build-web: node_modules
-	node_modules/.bin/webpack -p --config webpack.web.config.js
-
-serve-ssr:
-	node ./server-side-renderer/hypernova.js
-
-serve-web: build-web
-	node ./webserver.js
+serve: build
+	node ./build/webserver.js
 
 clean:
-	rm -f server-side-renderer/ssr-bundle.js
-	rm -rf build
-	rm -rf ssr_bundles
+	git clean -fdx

@@ -1,4 +1,4 @@
-module.exports = (markUp) => `
+module.exports = (markup) => `
     <!DOCTYPE html>
     <html>
     <head>
@@ -6,11 +6,11 @@ module.exports = (markUp) => `
         <meta charset="utf-8">
     </head>
     <body>
-        ${markUp}
+        <div id="root">${markup}</div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.4/react.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.4/react-dom.min.js"></script>
-        <script type="text/javascript" src="assets/vendor.bundle.js"></script> 
-        <script type="text/javascript" src="assets/app.bundle.js"></script> 
+        <script type="text/javascript" src="assets/vendor.bundle.js"></script>
+        <script type="text/javascript" src="assets/app.bundle.js"></script>
 
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

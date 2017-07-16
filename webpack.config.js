@@ -3,17 +3,16 @@ const webpack = require('webpack');
 const webpackVisualizer = require('webpack-visualizer-plugin');
 
 const VENDOR = [
-    'hypernova-react',
     'styled-components',
 ];
 
 module.exports = {
     entry: {
-        app: './assets/jsx/index.jsx',
+        app: './app/assets/jsx/index.js',
         vendor: VENDOR,
     },
     output: {
-        path: path.join(__dirname, 'build'),
+        path: path.join(__dirname, 'build', 'public'),
         filename: '[name].bundle.js'
     },
     plugins: [
@@ -37,14 +36,14 @@ module.exports = {
     module: {
         rules: [
             {
-                include: path.join(__dirname, 'assets'),
-                test: /\.jsx?$/,
+                include: path.join(__dirname, 'app'),
+                test: /\.js$/,
                 use: 'babel-loader'
             }
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js']
     },
     externals: {
         'react': 'window.React',
