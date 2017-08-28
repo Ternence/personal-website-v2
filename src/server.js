@@ -48,12 +48,13 @@ app.get('/', async (req, res) => {
 
 app.use('/assets', express.static(path.join(__dirname, 'web', 'public')));
 
+// TODO: merge static manifest and favicon with root route
+app.use('/favicon.ico', express.static(path.join(__dirname, 'web', 'public', 'favicon.ico')));
+
 app.get('/keybase.txt', (req, res) => {
     const stream = fs.createReadStream('keybase.txt', 'utf8');
     stream.pipe(res);
 });
-
-app.use('/favicon.ico', express.static(path.join(__dirname, 'web', 'public', 'favicon.ico')));
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}!`);
