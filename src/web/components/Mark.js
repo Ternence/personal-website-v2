@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Link from './link';
+import Link from './Link';
 
 const Title = styled.h1`
   font-size: 1.5em;
