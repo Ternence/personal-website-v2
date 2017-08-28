@@ -49,10 +49,11 @@ app.get('/', async (req, res) => {
 app.use('/assets', express.static(path.join(__dirname, 'web', 'public')));
 
 app.get('/keybase.txt', (req, res) => {
-    fs.readFile('keybase.txt', 'utf8', (err, file) => {
-        res.send(file);
-    });
+    const stream = fs.createReadStream('keybase.txt', 'utf8');
+    stream.pipe(res);
 });
+
+app.use('/favicon.ico', express.static(path.join(__dirname, 'web', 'public', 'favicon.ico')));
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}!`);
