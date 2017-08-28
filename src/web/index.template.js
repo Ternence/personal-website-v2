@@ -1,4 +1,4 @@
-module.exports = (markup) => `
+const Sections = [`
     <!DOCTYPE html>
     <html>
     <head>
@@ -7,13 +7,17 @@ module.exports = (markup) => `
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#db5945">
         <link rel="manifest" href="/assets/manifest.json">
+        <script defer src="https://unpkg.com/react@16.0.0-beta.5/umd/react.production.min.js" integrity="sha384-Mp2fG3fdR5E7ZNbA1fMuMsYHeb7tdRqfkUzLP0VCmBjMiiCBlcr7D86JfnpSt8V8" crossorigin="anonymous"></script>
+        <script defer src="https://unpkg.com/react-dom@16.0.0-beta.5/umd/react-dom.production.min.js" integrity="sha384-1Qg3StPdcAcxOEQ1SwCjd0dRGqDRSaPVlfMI10e2XMelyDMqvVwktaHF5KGuDJRj" crossorigin="anonymous"></script>
+        <script defer src="assets/vendor.bundle.js"></script>
+        <script defer src="assets/app.bundle.js"></script>
     </head>
     <body>
-        <div id="root">${markup}</div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js" integrity="sha256-ivdPAn5h6U67z6OPgwfiLM9ug6levxmYFqWNxNCV0YE=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js" integrity="sha256-UEqn5+tyzezD6A5HBMNTlc5mXkmt+ohTfCBPtXMaGb0=" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="assets/vendor.bundle.js"></script>
-        <script type="text/javascript" src="assets/app.bundle.js"></script>
+        <div id="root">
+`,
+          // React component goes here
+`
+        </div>
 
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -26,4 +30,6 @@ module.exports = (markup) => `
         </script>
     </body>
     </html>
-`;
+`];
+
+export default Sections;
