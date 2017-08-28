@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const webpackVisualizer = require('webpack-visualizer-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const VENDOR = [
     'styled-components',
@@ -8,11 +9,11 @@ const VENDOR = [
 
 module.exports = {
     entry: {
-        app: './app/assets/jsx/index.js',
+        app: './src/web/main.js',
         vendor: VENDOR,
     },
     output: {
-        path: path.join(__dirname, 'build', 'public'),
+        path: path.join(__dirname, 'build', 'web', 'public'),
         filename: '[name].bundle.js'
     },
     plugins: [
@@ -29,6 +30,9 @@ module.exports = {
             name: 'vendor',
             minChunks: Infinity,
         }),
+        new CopyWebpackPlugin([
+            { from: 'src/web/public' }
+        ]),
         new webpackVisualizer({
             filename: './statistics.html',
         }),
@@ -36,7 +40,7 @@ module.exports = {
     module: {
         rules: [
             {
-                include: path.join(__dirname, 'app'),
+                include: path.join(__dirname, 'src'),
                 test: /\.js$/,
                 use: 'babel-loader'
             }

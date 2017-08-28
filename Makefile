@@ -12,12 +12,16 @@ node_modules:
 
 .PHONY: build
 build: node_modules
-	mkdir -p build
-	node_modules/.bin/babel app -d build
-	node_modules/.bin/webpack -p --config webpack.config.js
+	rm -rf build
+	./node_modules/.bin/webpack -p --config webpack.config.js
+	./node_modules/.bin/babel src/server.js -o build/server.js
+	# TODO: replace this with a seperate SSR webpack build?
+	./node_modules/.bin/babel src/web -d build/web
+	# TODO: include this in the webpack build (that is guaranteed to ignore CommonsChunkPlugin)
+	./node_modules/.bin/babel src/web/public/service-worker.js -o build/web/public/service-worker.js
 
 serve: build
-	node ./build/webserver.js
+	node ./build/server.js
 
 clean:
 	git clean -fdx
