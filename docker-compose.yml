@@ -6,14 +6,14 @@ services:
         restart: always
         environment:
             - VIRTUAL_PORT=9123
-            - VIRTUAL_HOST=mark.larah.me,web.local
+            - VIRTUAL_HOST=lite.mark.larah.me,mark.larah.me,web.local
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock:ro
         networks:
             - web
         labels:
             - "traefik.backend=personal-website"
-            - "traefik.frontend.rule=Host:mark.larah.me"
+            - "traefik.frontend.rule=Host:mark.larah.me,lite.mark.larah.me"
             - "traefik.port=9123"
             - "traefik.protocol=http"
 
