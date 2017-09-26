@@ -27,6 +27,11 @@ class Mark extends Component {
                     <li><Link url="https://twitter.com/mark_larah" /></li>
                     <li><Link url="https://github.com/magicmark" /></li>
                 </ul>
+          
+                <h2>Projects</h2>
+                <ul>
+                    <li><Link url="https://composerize.com/">Composerize</Link></li>
+                </ul>
             </div>
         )
     }
