@@ -1,6 +1,6 @@
 const Sections = [`
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
     <head>
         <title>Mark Larah - Software Engineer</title>
         <meta charset="utf-8">
