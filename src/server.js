@@ -51,7 +51,7 @@ app.use('/assets', express.static(path.join(__dirname, 'web', 'public')));
 // TODO: merge static manifest and favicon with root route
 app.use('/favicon.ico', express.static(path.join(__dirname, 'web', 'public', 'favicon.ico')));
 
-app.use('/profile.jpg', express.static(path.join(__dirname, 'profile.jpg')));
+app.use('/profile.jpg', express.static(path.join(__dirname, '../profile.jpg')));
 
 
 app.get('/keybase.txt', (req, res) => {
