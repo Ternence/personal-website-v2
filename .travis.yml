@@ -1,14 +1,17 @@
+sudo: required
 language: node_js
 node_js:
   - "6"
+services:
+  - docker
+
+before_install:
+    - make docker-build
+    - make docker-run
+    - docker ps -a
+
 script:
-  - make build-ssr
-addons:
-  artifacts:
-    debug: true
-    paths:
-      - $(ls ssr_bundles/*.js)
-    target_paths: /website_ssr_bundles
+    - curl -L http://127.0.0.1:9123
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
