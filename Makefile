@@ -4,7 +4,7 @@ docker-build:
 	docker build --file Dockerfile -t $(DOCKER_TAG) .
 
 docker-run: docker-build
-	docker run -it --rm --env-file env_vars -p 9123:9123 --name $(DOCKER_TAG) $(DOCKER_TAG)
+	docker run -it --rm -p 9123:9123 --name $(DOCKER_TAG) $(DOCKER_TAG)
 
 .PHONY: node_modules
 node_modules:
