@@ -6,9 +6,10 @@ services:
   - docker
 
 script:
-    - make itest
+  - make itest
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" && docker push magicmark/personal-website;
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    docker push magicmark/personal-website:latest;
     fi
