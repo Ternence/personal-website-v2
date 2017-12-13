@@ -5,13 +5,8 @@ node_js:
 services:
   - docker
 
-before_install:
-    - make docker-build
-    - make docker-run
-    - docker ps -a
-
 script:
-    - curl -L http://127.0.0.1:9123
+    - make itest
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then

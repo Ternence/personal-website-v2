@@ -8,4 +8,5 @@ WORKDIR /code
 
 EXPOSE 9123
 RUN ["/root/.yarn/bin/yarn", "install"]
+HEALTHCHECK CMD curl --fail http://localhost:9123/ || exit 1
 ENTRYPOINT ["/code/bin/entrypoint-web"]

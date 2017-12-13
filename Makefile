@@ -4,7 +4,13 @@ docker-build:
 	docker build --file Dockerfile -t $(DOCKER_TAG) .
 
 docker-run: docker-build
-	docker run -it --rm -p 9123:9123 --name $(DOCKER_TAG) $(DOCKER_TAG)
+	docker run --rm -p 9123:9123 --name $(DOCKER_TAG) $(DOCKER_TAG)
+
+itest: docker-build
+	docker run -d --rm -p 9123:9123 --name $(DOCKER_TAG) $(DOCKER_TAG)
+	bash -c "\
+		for i in 1 2 3 4 5; do docker exec -it markl-website /bin/bash -c 'curl -L localhost:9123' && break || sleep 5; done; \
+		docker stop markl-website"
 
 .PHONY: node_modules
 node_modules:
