@@ -17,7 +17,7 @@ class Mark extends Component {
         <header>
           <h1>Mark Larah</h1>
           <aside>
-            <i>Developer of fine artisanal software</i>
+            <i>Developer of fine artisanal software.</i>
           </aside>
         </header>
 
