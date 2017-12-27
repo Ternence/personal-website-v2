@@ -10,6 +10,7 @@ script:
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker build -t magicmark/personal-website .;
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
     docker push magicmark/personal-website:latest;
     fi
