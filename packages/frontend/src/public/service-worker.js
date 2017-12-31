@@ -1,3 +1,3 @@
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
     console.log('yay service workers');
 });

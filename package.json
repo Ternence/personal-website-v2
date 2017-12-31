@@ -6,6 +6,9 @@
   "author": "Mark Larah <mark@larah.me>",
   "license": "WTFPL",
   "private": true,
+  "scripts": {
+    "eslint": "eslint packages/{frontend,backend}/src/**/*.js"
+  },
   "dependencies": {
     "@larah/personal-website-backend": "*",
     "@sharkcore/eslint-config": "^1.0.2",
