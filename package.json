@@ -4,9 +4,10 @@
   "main": "index.js",
   "repository": "git@github.com:magicmark/personal-website-v2",
   "author": "Mark Larah <mark@larah.me>",
-  "license": "None",
+  "license": "WTFPL",
   "private": true,
   "dependencies": {
+    "@larah/personal-website-backend": "^1.0.0",
     "@sharkcore/eslint-config": "^1.0.2",
     "eslint": "^4.14.0"
   }

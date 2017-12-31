@@ -18,22 +18,6 @@ const baseConfig = {
         path: path.join(__dirname, 'build'),
         filename: 'assets/[name].js',
     },
-    plugins: [
-        new CopyWebpackPlugin(
-            [
-                { from: 'service-worker.js' },
-                { from: 'manifest.json' },
-                { from: 'favicon.ico' },
-            ],
-            {
-                context: 'src/public',
-            },
-        ),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: Infinity,
-        }),
-    ],
     module: {
         rules: [
             {
@@ -46,10 +30,24 @@ const baseConfig = {
     resolve: {
         extensions: ['.js'],
     },
-    externals: {
-        react: 'React',
-        'react-dom': 'ReactDOM',
-    },
+    plugins: [
+        new CopyWebpackPlugin(
+            [
+                { from: 'service-worker.js' },
+                { from: 'profile.jpg' },
+                { from: 'keybase.txt' },
+                { from: 'manifest.json' },
+                { from: 'favicon.ico' },
+            ],
+            {
+                context: 'src/public',
+            },
+        ),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: Infinity,
+        }),
+    ],
 };
 
 // Dev Stuff
@@ -64,11 +62,12 @@ if (process.env.NODE_ENV === 'production') {
                 { from: 'src/public/index.html', to: 'index.html' },
             ]),
         ],
+        externals: {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+        },
     });
 } else {
-    console.log('derp');
-
-    console.log(process.env.NODE_ENV);
     module.exports = merge(baseConfig, {
         devServer: {
             contentBase: path.join(__dirname, 'build'),
