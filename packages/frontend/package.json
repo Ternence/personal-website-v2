@@ -1,0 +1,41 @@
+{
+  "name": "@larah/personal-website-frontend",
+  "version": "2.0.1",
+  "description": "Mark's Personal Website (Frontend)",
+  "repository": "git@github.com:magicmark/personal-website-v2",
+  "author": "Mark Larah <mark@larah.me>",
+  "license": "WTFPL",
+  "scripts": {
+    "dev": "webpack-dev-server --config webpack.client.config.js",
+    "prepublishOnly": "make build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@sharkcore/eslint-config": "^1.0.2",
+    "babel-core": "^6",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6",
+    "copy-webpack-plugin": "^4.3.1",
+    "eslint": "^4.14.0",
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7",
+    "webpack-merge": "^4.1.1",
+    "webpack-visualizer-plugin": "^0.1.11"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "styled-components": "^2.4.0"
+  },
+  "files": [
+    "build",
+    "ssr_build"
+  ]
+}

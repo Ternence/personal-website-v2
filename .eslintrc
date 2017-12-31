@@ -1,0 +1,4 @@
+{
+    "extends": "@sharkcore",
+    "root": true
+}
