@@ -1,0 +1,9 @@
+{
+  "name": "@magicmark/personal-website-backend",
+  "version": "0.0.0",
+  "description": "Mark's Personal Website (Backend)",
+  "repository": "git@github.com:magicmark/personal-website-v2",
+  "author": "Mark Larah <mark@larah.me>",
+  "license": "None",
+  "private": true
+}
