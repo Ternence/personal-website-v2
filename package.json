@@ -7,8 +7,9 @@
   "license": "WTFPL",
   "private": true,
   "dependencies": {
-    "@larah/personal-website-backend": "^1.0.0",
+    "@larah/personal-website-backend": "*",
     "@sharkcore/eslint-config": "^1.0.2",
-    "eslint": "^4.14.0"
+    "eslint": "^4.14.0",
+    "lerna": "^2.5.1"
   }
 }

@@ -1,13 +1,13 @@
 {
   "name": "@larah/personal-website-frontend",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Mark's Personal Website (Frontend)",
   "repository": "git@github.com:magicmark/personal-website-v2",
   "author": "Mark Larah <mark@larah.me>",
   "license": "WTFPL",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.client.config.js",
-    "prepack": "make build"
+    "prepublishOnly": "make build"
   },
   "publishConfig": {
     "access": "public"
