@@ -1,19 +1,19 @@
 {
     "name": "@larah/personal-website-backend",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Mark's Personal Website (Backend)",
     "repository": "git@github.com:magicmark/personal-website-v2",
     "author": "Mark Larah <mark@larah.me>",
     "license": "WTFPL",
     "scripts": {
         "start": "node build/server.js",
-        "prepack": "make build"
+        "prepublishOnly": "make build"
     },
     "publishConfig": {
         "access": "public"
     },
     "dependencies": {
-        "@larah/personal-website-frontend": "^2.0.0",
+        "@larah/personal-website-frontend": "^2.0.1",
         "babel-polyfill": "^6.26.0",
         "babel-preset-react": "^6.24.1",
         "compression": "^1.7.1",
