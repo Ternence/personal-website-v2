@@ -1,12 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import Auth from './Auth';
 import Link from './Link';
-
-const Title = styled.h1`
-    font-size: 1.5em;
-    text-align: center;
-    color: palevioletred;
-`;
 
 const Container = styled.div`
     transform: skew(1deg);
@@ -48,7 +43,11 @@ const Mark = () => (
             <li>
                 <Link href="https://composerize.com/">Composerize</Link>
             </li>
+            <li>
+                <Link href="https://github.com/sharkcore/tweenz">Tweens</Link>
+            </li>
         </ul>
+        <Auth />
     </Container>
 );
 
