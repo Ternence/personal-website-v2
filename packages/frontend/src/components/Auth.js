@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
-import { GoogleLogin } from 'react-google-login';
 
 const TopRight = styled.div`
     position: absolute;
