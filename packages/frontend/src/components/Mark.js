@@ -44,7 +44,7 @@ const Mark = () => (
                 <Link href="https://composerize.com/">Composerize</Link>
             </li>
             <li>
-                <Link href="https://github.com/sharkcore/tweenz">Tweens</Link>
+                <Link href="https://github.com/sharkcore/tweenz">Tweenz</Link>
             </li>
         </ul>
         <Auth />
