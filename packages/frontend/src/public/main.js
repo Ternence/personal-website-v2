@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Mark from '../components/Mark';
 
-ReactDOM.render(<Mark />, document.getElementById('root'));
+ReactDOM.hydrate(<Mark />, document.getElementById('root'));
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

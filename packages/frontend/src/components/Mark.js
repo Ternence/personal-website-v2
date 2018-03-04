@@ -12,7 +12,7 @@ const Mark = () => (
     <div>
         <Container>
             <header>
-                <h1>Mark Larah!</h1>
+                <h1>Mark Larah</h1>
                 <aside>
                     <i>Developer of fine artisanal software</i>
                 </aside>
@@ -20,8 +20,15 @@ const Mark = () => (
 
             <h2>48656C6C6F20546865726521</h2>
             <p>
-                I am a Software Engineer from the UK currently working on web
-                infrastructure at <Link href="https://www.yelp.com">Yelp</Link>.
+                I am a{' '}
+                <span role="img" aria-label="uk">
+                    🇬🇧
+                </span>{' '}
+                Software Engineer currently working on web infrastructure at{' '}
+                <Link href="https://www.yelp.com">Yelp</Link>{' '}
+                <span role="img" aria-label="usa">
+                    🇺🇸
+                </span>.
             </p>
 
             <h2>More Info</h2>

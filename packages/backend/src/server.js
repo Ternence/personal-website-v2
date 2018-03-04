@@ -51,6 +51,13 @@ const templateSections = [
 // app.use('/', express.static(path.join(__dirname, 'public')));
 
 app.get('/', async (req, res) => {
+    res.append(
+        'Server-Timing',
+        ['A - Never', 'B - Gonna', 'C - Give', 'D - You', 'E - Up']
+            .map((v, i, arr) => `val=${arr.length - i}; "${v}"`)
+            .join(','),
+    );
+
     const templateSectionStreams = templateSections.map(getStream);
 
     await streamResponse(res, templateSectionStreams[0]);
