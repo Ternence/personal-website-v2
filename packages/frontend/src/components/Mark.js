@@ -5,7 +5,7 @@ import Link from './Link';
 import CookieNotice from './CookieNotice';
 
 const Container = styled.div`
-    transform: skew(1.35deg);
+    transform: skew(1.38deg);
 `;
 
 const Mark = () => (
